@@ -1,0 +1,60 @@
+{
+  "original_question_cn": "特种钢是什么",
+  "main_topic_cn": "特种钢",
+  "domain_cn": "科学",
+  "sub_domain_cn": "材料科学",
+  "potential_facets_cn": [
+    {
+      "facet_id": "general_definition",
+      "facet_name_cn": "特种钢的基本定义与概述",
+      "facet_description_cn": "简要介绍什么是特种钢及其核心概念。",
+      "example_questions_cn": [
+        "什么是特种钢？",
+        "能简单介绍一下特种钢吗？"
+      ],
+      "keywords_cn": [
+        "概述",
+        "基本概念",
+        "定义",
+        "特种钢"
+      ]
+    },
+    {
+      "facet_id": "key_aspects",
+      "facet_name_cn": "特种钢的关键方面",
+      "facet_description_cn": "探讨特种钢中一些重要的方面或组成部分。",
+      "example_questions_cn": [
+        "特种钢有哪些关键点？",
+        "了解特种钢需要关注哪些方面？"
+      ],
+      "keywords_cn": [
+        "重要方面",
+        "核心组成",
+        "特种钢",
+        "关键点"
+      ]
+    },
+    {
+      "facet_id": "learning_resources",
+      "facet_name_cn": "特种钢的相关学习资源",
+      "facet_description_cn": "提供一些学习或进一步了解特种钢的资源建议。",
+      "example_questions_cn": [
+        "学习特种钢有什么好的资料推荐吗？",
+        "在哪里可以找到更多关于特种钢的信息？"
+      ],
+      "keywords_cn": [
+        "深入学习",
+        "学习资源",
+        "参考资料",
+        "特种钢"
+      ]
+    }
+  ],
+  "suggested_overall_follow_ups_cn": [
+    "关于“特种钢”，您想先了解哪个方面？",
+    "例如：“特种钢的基本定义与概述”、“特种钢的关键方面”等方面的内容？",
+    "或者，您有其他关于“特种钢”的具体问题吗？"
+  ],
+  "main_topic_en": "Special Steel",
+  "llm_confidence_score": 0.92
+}

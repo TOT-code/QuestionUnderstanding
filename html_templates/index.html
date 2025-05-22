@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问题理解与方面生成助手</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 我们稍后会创建 static/style.css -->
+</head>
+<body>
+    <div class="container">
+        <h1>问题理解与方面生成助手</h1>
+
+        <div class="section api-info">
+            <p>当前API: <span id="currentApi">{{ current_api }}</span></p>
+            <!-- API切换功能待实现 -->
+        </div>
+
+        <div class="section question-input">
+            <h2>1. 输入您的问题</h2>
+            <textarea id="userQuestion" rows="3" placeholder="例如：我想了解一下Python的装饰器"></textarea>
+            <button id="submitQuestion">提交问题</button>
+        </div>
+
+        <div class="section output-display">
+            <h2>2. 处理结果</h2>
+            <div id="loadingIndicator" style="display: none;">正在处理，请稍候...</div>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            <h3>生成的JSON:</h3>
+            <pre id="jsonOutput">这里将显示处理后的JSON结果。</pre>
+            <p>输出文件路径: <span id="outputPath">N/A</span></p>
+        </div>
+
+        <div class="section template-management">
+            <h2>3. 方面模板管理</h2>
+            <div class="template-upload">
+                <h3>上传新模板</h3>
+                <input type="text" id="newTemplateFilename" placeholder="模板文件名 (例如: new_template.json)">
+                <textarea id="newTemplateContent" rows="10" placeholder="在此处粘贴JSON模板内容..."></textarea>
+                <button id="uploadTemplate">上传模板</button>
+                <div id="uploadMessage" class="message" style="display: none;"></div>
+            </div>
+            <div class="template-viewer">
+                <h3>查看/加载现有模板</h3>
+                <select id="existingTemplates">
+                    <option value="">选择一个模板查看...</option>
+                </select>
+                <button id="loadSelectedTemplate">加载选中模板到上方编辑区</button>
+                <div id="viewTemplateMessage" class="message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="section app-control">
+            <button id="shutdownApp">关闭应用</button>
+            <div id="shutdownMessage" class="message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- 我们稍后会创建 static/script.js -->
+</body>
+</html>

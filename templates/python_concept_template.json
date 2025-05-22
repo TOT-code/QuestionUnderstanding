@@ -1,0 +1,51 @@
+[
+  {
+    "facet_id": "definition_and_purpose",
+    "facet_name_cn_template": "[主题]的基本定义与核心用途",
+    "facet_description_cn_template": "解释什么是[主题]，它主要用来解决什么问题。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "[主题]主要用来做什么？"
+    ],
+    "base_keywords": ["定义", "用途", "概念"]
+  },
+  {
+    "facet_id": "working_principle",
+    "facet_name_cn_template": "[主题]的工作原理详解",
+    "facet_description_cn_template": "深入阐述[主题]是如何工作的。",
+    "example_question_templates": [
+      "[主题]的工作原理是怎样的？",
+      "能解释一下[主题]的内部机制吗？"
+    ],
+    "base_keywords": ["原理", "机制", "内部工作"]
+  },
+  {
+    "facet_id": "basic_syntax_and_examples",
+    "facet_name_cn_template": "[主题]的基本语法与简单示例",
+    "facet_description_cn_template": "展示[主题]的基础语法以及一个或多个简单的代码示例。",
+    "example_question_templates": [
+      "[主题]的基本语法是怎样的？",
+      "能给一个[主题]的简单代码例子吗？"
+    ],
+    "base_keywords": ["语法", "示例代码", "用法"]
+  },
+  {
+    "facet_id": "advantages_and_disadvantages",
+    "facet_name_cn_template": "[主题]的优缺点分析",
+    "facet_description_cn_template": "总结使用[主题]的主要优点和潜在的缺点或注意事项。",
+    "example_question_templates": [
+      "使用[主题]有什么好处？",
+      "[主题]有什么缺点或需要注意的地方吗？"
+    ],
+    "base_keywords": ["优点", "缺点", "好处", "坏处", "注意事项"]
+  },
+  {
+    "facet_id": "use_cases",
+    "facet_name_cn_template": "[主题]的典型应用场景",
+    "facet_description_cn_template": "列举[主题]在实际开发中的一些典型应用场景。",
+    "example_question_templates": [
+      "[主题]通常用在哪些实际场景中？"
+    ],
+    "base_keywords": ["应用场景", "实际应用", "用途实例"]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "facet_id": "general_definition",
+    "facet_name_cn_template": "[主题]的基本定义与概述",
+    "facet_description_cn_template": "简要介绍什么是[主题]及其核心概念。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "能简单介绍一下[主题]吗？"
+    ],
+    "base_keywords": ["定义", "概述", "基本概念"]
+  },
+  {
+    "facet_id": "key_aspects",
+    "facet_name_cn_template": "[主题]的关键方面",
+    "facet_description_cn_template": "探讨[主题]中一些重要的方面或组成部分。",
+    "example_question_templates": [
+      "[主题]有哪些关键点？",
+      "了解[主题]需要关注哪些方面？"
+    ],
+    "base_keywords": ["关键点", "重要方面", "核心组成"]
+  },
+  {
+    "facet_id": "learning_resources",
+    "facet_name_cn_template": "[主题]的相关学习资源",
+    "facet_description_cn_template": "提供一些学习或进一步了解[主题]的资源建议。",
+    "example_question_templates": [
+      "学习[主题]有什么好的资料推荐吗？",
+      "在哪里可以找到更多关于[主题]的信息？"
+    ],
+    "base_keywords": ["学习资源", "参考资料", "深入学习"]
+  }
+]

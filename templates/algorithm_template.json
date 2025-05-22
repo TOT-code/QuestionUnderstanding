@@ -1,0 +1,61 @@
+[
+  {
+    "facet_id": "definition_and_prerequisites",
+    "facet_name_cn_template": "[主题]的基本定义与前提条件",
+    "facet_description_cn_template": "解释什么是[主题]，以及它能够高效工作的前提条件。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "使用[主题]有什么前提条件吗？"
+    ],
+    "base_keywords": ["定义", "前提条件", "算法概念"]
+  },
+  {
+    "facet_id": "core_idea_and_steps",
+    "facet_name_cn_template": "[主题]的核心思想与步骤",
+    "facet_description_cn_template": "详细描述[主题]的核心思想以及具体的执行步骤。",
+    "example_question_templates": [
+      "[主题]的核心思想是什么？",
+      "[主题]的具体步骤是怎样的？"
+    ],
+    "base_keywords": ["核心思想", "算法步骤", "执行流程"]
+  },
+  {
+    "facet_id": "implementation_examples",
+    "facet_name_cn_template": "[主题]的实现示例",
+    "facet_description_cn_template": "提供[主题]的伪代码实现，以及至少一种常见编程语言的实现方式。",
+    "example_question_templates": [
+      "能给一个[主题]的伪代码实现吗？",
+      "如何用Python实现[主题]？"
+    ],
+    "base_keywords": ["实现", "伪代码", "代码示例", "编程实现"]
+  },
+  {
+    "facet_id": "time_and_space_complexity",
+    "facet_name_cn_template": "[主题]的时间与空间复杂度",
+    "facet_description_cn_template": "分析[主题]的时间复杂度（平均、最坏情况）和空间复杂度。",
+    "example_question_templates": [
+      "[主题]的时间复杂度是多少？",
+      "[主题]的空间复杂度是多少？"
+    ],
+    "base_keywords": ["时间复杂度", "空间复杂度", "性能分析", "算法效率"]
+  },
+  {
+    "facet_id": "advantages_and_disadvantages",
+    "facet_name_cn_template": "[主题]的优缺点分析",
+    "facet_description_cn_template": "总结[主题]的主要优点和缺点或局限性。",
+    "example_question_templates": [
+      "[主题]有哪些优点？",
+      "[主题]有什么缺点或局限性吗？"
+    ],
+    "base_keywords": ["优点", "缺点", "算法优势", "算法劣势"]
+  },
+  {
+    "facet_id": "application_scenarios",
+    "facet_name_cn_template": "[主题]的典型应用场景",
+    "facet_description_cn_template": "列举[主题]在实际中的一些典型应用场景。",
+    "example_question_templates": [
+      "[主题]通常用在哪些场景？"
+    ],
+    "base_keywords": ["应用场景", "实际应用", "算法用途"]
+  }
+]

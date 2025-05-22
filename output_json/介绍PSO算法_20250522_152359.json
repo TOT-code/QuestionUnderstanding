@@ -1,0 +1,107 @@
+{
+  "original_question_cn": "介绍PSO算法",
+  "main_topic_cn": "PSO算法",
+  "domain_cn": "编程",
+  "sub_domain_cn": "算法与数据结构",
+  "potential_facets_cn": [
+    {
+      "facet_id": "definition_and_prerequisites",
+      "facet_name_cn": "PSO算法的基本定义与前提条件",
+      "facet_description_cn": "解释什么是PSO算法，以及它能够高效工作的前提条件。",
+      "example_questions_cn": [
+        "什么是PSO算法？",
+        "使用PSO算法有什么前提条件吗？"
+      ],
+      "keywords_cn": [
+        "定义",
+        "算法概念",
+        "前提条件",
+        "PSO算法"
+      ]
+    },
+    {
+      "facet_id": "core_idea_and_steps",
+      "facet_name_cn": "PSO算法的核心思想与步骤",
+      "facet_description_cn": "详细描述PSO算法的核心思想以及具体的执行步骤。",
+      "example_questions_cn": [
+        "PSO算法的核心思想是什么？",
+        "PSO算法的具体步骤是怎样的？"
+      ],
+      "keywords_cn": [
+        "执行流程",
+        "PSO算法",
+        "核心思想",
+        "算法步骤"
+      ]
+    },
+    {
+      "facet_id": "implementation_examples",
+      "facet_name_cn": "PSO算法的实现示例",
+      "facet_description_cn": "提供PSO算法的伪代码实现，以及至少一种常见编程语言的实现方式。",
+      "example_questions_cn": [
+        "能给一个PSO算法的伪代码实现吗？",
+        "如何用Python实现PSO算法？"
+      ],
+      "keywords_cn": [
+        "PSO算法",
+        "编程实现",
+        "代码示例",
+        "实现",
+        "伪代码"
+      ]
+    },
+    {
+      "facet_id": "time_and_space_complexity",
+      "facet_name_cn": "PSO算法的时间与空间复杂度",
+      "facet_description_cn": "分析PSO算法的时间复杂度（平均、最坏情况）和空间复杂度。",
+      "example_questions_cn": [
+        "PSO算法的时间复杂度是多少？",
+        "PSO算法的空间复杂度是多少？"
+      ],
+      "keywords_cn": [
+        "算法效率",
+        "PSO算法",
+        "时间复杂度",
+        "性能分析",
+        "空间复杂度"
+      ]
+    },
+    {
+      "facet_id": "advantages_and_disadvantages",
+      "facet_name_cn": "PSO算法的优缺点分析",
+      "facet_description_cn": "总结PSO算法的主要优点和缺点或局限性。",
+      "example_questions_cn": [
+        "PSO算法有哪些优点？",
+        "PSO算法有什么缺点或局限性吗？"
+      ],
+      "keywords_cn": [
+        "缺点",
+        "PSO算法",
+        "优点",
+        "算法优势",
+        "算法劣势"
+      ]
+    },
+    {
+      "facet_id": "application_scenarios",
+      "facet_name_cn": "PSO算法的典型应用场景",
+      "facet_description_cn": "列举PSO算法在实际中的一些典型应用场景。",
+      "example_questions_cn": [
+        "PSO算法通常用在哪些场景？"
+      ],
+      "keywords_cn": [
+        "PSO算法",
+        "应用场景",
+        "算法用途",
+        "实际应用"
+      ]
+    }
+  ],
+  "suggested_overall_follow_ups_cn": [
+    "关于“PSO算法”，您想先了解哪个方面？",
+    "例如：“PSO算法的基本定义与前提条件”、“PSO算法的核心思想与步骤”等方面的内容？",
+    "或者，您有其他关于“PSO算法”的具体问题吗？"
+  ],
+  "main_topic_en": "PSO Algorithm",
+  "llm_confidence_score": 0.92
+}
