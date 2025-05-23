@@ -5,7 +5,7 @@ import os
 
 # DashScope API Credentials
 # 更好的做法: os.environ.get("DASHSCOPE_API_KEY")
-DASHSCOPE_API_KEY = "sk-8f6c94372d804ceca9dd394cc98ee2e4" # 您提供的API Key
+DASHSCOPE_API_KEY = "*******" # 您提供的API Key
 DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
 client = OpenAI(
