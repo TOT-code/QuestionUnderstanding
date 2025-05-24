@@ -1,0 +1,90 @@
+[
+  {
+    "facet_id": "basic_concepts_and_principles",
+    "facet_name_cn_template": "[主题]的基本概念与原理",
+    "facet_description_cn_template": "解释[主题]的基本概念、工作原理和物理基础。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "[主题]的工作原理是什么？",
+      "[主题]基于什么物理原理？"
+    ],
+    "base_keywords": ["基本概念", "工作原理", "物理基础", "电子原理"]
+  },
+  {
+    "facet_id": "circuit_design_and_structure",
+    "facet_name_cn_template": "[主题]的电路设计与结构",
+    "facet_description_cn_template": "分析[主题]的电路结构、设计方法和电路拓扑。",
+    "example_question_templates": [
+      "[主题]的电路结构是怎样的？",
+      "如何设计[主题]电路？",
+      "[主题]有哪些典型的电路拓扑？"
+    ],
+    "base_keywords": ["电路设计", "电路结构", "电路拓扑", "设计方法"]
+  },
+  {
+    "facet_id": "component_characteristics",
+    "facet_name_cn_template": "[主题]的器件特性与参数",
+    "facet_description_cn_template": "介绍[主题]相关器件的特性参数、选型原则和使用要求。",
+    "example_question_templates": [
+      "[主题]使用哪些电子器件？",
+      "[主题]器件的特性参数有哪些？",
+      "如何选择[主题]的器件？"
+    ],
+    "base_keywords": ["器件特性", "特性参数", "器件选型", "使用要求"]
+  },
+  {
+    "facet_id": "performance_analysis",
+    "facet_name_cn_template": "[主题]的性能分析与测试",
+    "facet_description_cn_template": "探讨[主题]的性能指标、分析方法和测试技术。",
+    "example_question_templates": [
+      "[主题]的性能指标有哪些？",
+      "如何分析[主题]的性能？",
+      "[主题]需要进行哪些测试？"
+    ],
+    "base_keywords": ["性能分析", "性能指标", "测试技术", "分析方法"]
+  },
+  {
+    "facet_id": "design_considerations",
+    "facet_name_cn_template": "[主题]的设计考虑与优化",
+    "facet_description_cn_template": "说明[主题]设计中的关键考虑因素、优化策略和设计准则。",
+    "example_question_templates": [
+      "设计[主题]需要考虑哪些因素？",
+      "[主题]的设计准则是什么？",
+      "如何优化[主题]的设计？"
+    ],
+    "base_keywords": ["设计考虑", "优化策略", "设计准则", "关键因素"]
+  },
+  {
+    "facet_id": "manufacturing_and_implementation",
+    "facet_name_cn_template": "[主题]的制造工艺与实现",
+    "facet_description_cn_template": "介绍[主题]的制造工艺、实现技术和生产过程。",
+    "example_question_templates": [
+      "[主题]的制造工艺是什么？",
+      "如何实现[主题]？",
+      "[主题]的生产过程包含哪些步骤？"
+    ],
+    "base_keywords": ["制造工艺", "实现技术", "生产过程", "工艺流程"]
+  },
+  {
+    "facet_id": "application_examples",
+    "facet_name_cn_template": "[主题]的应用实例与案例",
+    "facet_description_cn_template": "列举[主题]在不同领域的应用实例和成功案例。",
+    "example_question_templates": [
+      "[主题]主要应用在哪些领域？",
+      "[主题]有哪些典型应用案例？",
+      "[主题]在实际中如何应用？"
+    ],
+    "base_keywords": ["应用实例", "应用案例", "实际应用", "应用领域"]
+  },
+  {
+    "facet_id": "troubleshooting_and_maintenance",
+    "facet_name_cn_template": "[主题]的故障诊断与维护",
+    "facet_description_cn_template": "说明[主题]的常见故障、诊断方法和维护要求。",
+    "example_question_templates": [
+      "[主题]有哪些常见故障？",
+      "如何诊断[主题]的问题？",
+      "[主题]需要如何维护？"
+    ],
+    "base_keywords": ["故障诊断", "维护方法", "常见故障", "诊断技术"]
+  }
+]

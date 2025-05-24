@@ -1,0 +1,90 @@
+[
+  {
+    "facet_id": "theoretical_foundation",
+    "facet_name_cn_template": "[主题]的理论基础与数学原理",
+    "facet_description_cn_template": "阐述[主题]的数学理论基础、核心公式和理论依据。",
+    "example_question_templates": [
+      "[主题]的数学原理是什么？",
+      "[主题]基于哪些理论基础？",
+      "[主题]的核心公式有哪些？"
+    ],
+    "base_keywords": ["理论基础", "数学原理", "核心公式", "理论依据"]
+  },
+  {
+    "facet_id": "algorithm_implementation",
+    "facet_name_cn_template": "[主题]的算法实现与步骤",
+    "facet_description_cn_template": "详细描述[主题]的算法流程、实现步骤和计算过程。",
+    "example_question_templates": [
+      "[主题]的算法步骤是什么？",
+      "如何实现[主题]算法？",
+      "[主题]的计算流程是怎样的？"
+    ],
+    "base_keywords": ["算法实现", "实现步骤", "计算流程", "算法流程"]
+  },
+  {
+    "facet_id": "parameter_optimization",
+    "facet_name_cn_template": "[主题]的参数设置与优化",
+    "facet_description_cn_template": "说明[主题]的关键参数设置方法、优化策略和调整技巧。",
+    "example_question_templates": [
+      "[主题]有哪些关键参数？",
+      "如何优化[主题]的参数设置？",
+      "[主题]的参数调整有什么技巧？"
+    ],
+    "base_keywords": ["参数设置", "参数优化", "调整策略", "关键参数"]
+  },
+  {
+    "facet_id": "performance_evaluation",
+    "facet_name_cn_template": "[主题]的性能评估指标",
+    "facet_description_cn_template": "介绍[主题]的性能评价标准、评估指标和测试方法。",
+    "example_question_templates": [
+      "[主题]的性能如何评估？",
+      "[主题]有哪些评价指标？",
+      "如何测试[主题]的效果？"
+    ],
+    "base_keywords": ["性能评估", "评价指标", "测试方法", "效果评价"]
+  },
+  {
+    "facet_id": "frequency_domain_analysis",
+    "facet_name_cn_template": "[主题]的频域分析方法",
+    "facet_description_cn_template": "探讨[主题]在频域的特性分析、频谱处理和频域变换。",
+    "example_question_templates": [
+      "[主题]的频域特性是什么？",
+      "[主题]如何进行频谱分析？",
+      "[主题]涉及哪些频域变换？"
+    ],
+    "base_keywords": ["频域分析", "频谱处理", "频域变换", "频域特性"]
+  },
+  {
+    "facet_id": "time_domain_analysis",
+    "facet_name_cn_template": "[主题]的时域分析方法",
+    "facet_description_cn_template": "分析[主题]在时域的信号特征、时域处理和时序分析。",
+    "example_question_templates": [
+      "[主题]的时域特性是什么？",
+      "[主题]如何进行时域处理？",
+      "[主题]的时序分析方法有哪些？"
+    ],
+    "base_keywords": ["时域分析", "时域处理", "时序分析", "时域特性"]
+  },
+  {
+    "facet_id": "practical_applications",
+    "facet_name_cn_template": "[主题]的实际应用场景",
+    "facet_description_cn_template": "列举[主题]在各个领域的实际应用和具体使用案例。",
+    "example_question_templates": [
+      "[主题]主要应用在哪些场景？",
+      "[主题]的实际应用案例有哪些？",
+      "哪些领域会用到[主题]？"
+    ],
+    "base_keywords": ["实际应用", "应用场景", "使用案例", "应用领域"]
+  },
+  {
+    "facet_id": "tools_and_implementation",
+    "facet_name_cn_template": "[主题]的工具与实现方式",
+    "facet_description_cn_template": "介绍实现[主题]常用的软件工具、编程库和开发平台。",
+    "example_question_templates": [
+      "实现[主题]常用哪些工具？",
+      "[主题]可以用什么软件实现？",
+      "有哪些[主题]的编程库？"
+    ],
+    "base_keywords": ["软件工具", "编程库", "开发平台", "实现工具"]
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "facet_id": "basic_principle_and_definition",
+    "facet_name_cn_template": "[主题]的基本原理与定义",
+    "facet_description_cn_template": "解释[主题]的基本工作原理、核心概念和技术定义。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "[主题]的工作原理是什么？",
+      "[主题]的核心概念有哪些？"
+    ],
+    "base_keywords": ["定义", "原理", "基本概念", "工作机制"]
+  },
+  {
+    "facet_id": "technical_specifications",
+    "facet_name_cn_template": "[主题]的技术规范与标准",
+    "facet_description_cn_template": "详述[主题]相关的技术标准、协议规范和行业标准。",
+    "example_question_templates": [
+      "[主题]遵循哪些技术标准？",
+      "[主题]的协议规范是什么？",
+      "[主题]有哪些相关的行业标准？"
+    ],
+    "base_keywords": ["技术标准", "协议", "规范", "标准化"]
+  },
+  {
+    "facet_id": "system_architecture",
+    "facet_name_cn_template": "[主题]的系统架构与实现",
+    "facet_description_cn_template": "分析[主题]的系统架构设计、组成模块和具体实现方式。",
+    "example_question_templates": [
+      "[主题]的系统架构是怎样的？",
+      "[主题]包含哪些主要组成部分？",
+      "如何实现[主题]系统？"
+    ],
+    "base_keywords": ["系统架构", "组成模块", "实现方式", "设计结构"]
+  },
+  {
+    "facet_id": "performance_metrics",
+    "facet_name_cn_template": "[主题]的性能指标与评估",
+    "facet_description_cn_template": "介绍[主题]的关键性能指标、测量方法和评估标准。",
+    "example_question_templates": [
+      "[主题]的主要性能指标有哪些？",
+      "如何评估[主题]的性能？",
+      "[主题]的质量标准是什么？"
+    ],
+    "base_keywords": ["性能指标", "评估标准", "测量方法", "质量参数"]
+  },
+  {
+    "facet_id": "modulation_and_coding",
+    "facet_name_cn_template": "[主题]中的调制与编码技术",
+    "facet_description_cn_template": "探讨[主题]采用的调制方式、编码技术和信号处理方法。",
+    "example_question_templates": [
+      "[主题]使用什么调制技术？",
+      "[主题]的编码方式是什么？",
+      "[主题]如何进行信号处理？"
+    ],
+    "base_keywords": ["调制技术", "编码方式", "信号处理", "数字调制"]
+  },
+  {
+    "facet_id": "application_scenarios",
+    "facet_name_cn_template": "[主题]的典型应用场景",
+    "facet_description_cn_template": "列举[主题]在不同领域和场景中的具体应用实例。",
+    "example_question_templates": [
+      "[主题]主要应用在哪些场景？",
+      "[主题]的实际应用案例有哪些？",
+      "哪些行业会用到[主题]？"
+    ],
+    "base_keywords": ["应用场景", "实际应用", "行业应用", "案例分析"]
+  },
+  {
+    "facet_id": "advantages_and_limitations",
+    "facet_name_cn_template": "[主题]的优势与局限性",
+    "facet_description_cn_template": "分析[主题]的技术优势、适用条件以及存在的局限性和挑战。",
+    "example_question_templates": [
+      "[主题]有哪些技术优势？",
+      "[主题]的局限性是什么？",
+      "使用[主题]需要注意什么问题？"
+    ],
+    "base_keywords": ["技术优势", "局限性", "适用条件", "技术挑战"]
+  }
+]

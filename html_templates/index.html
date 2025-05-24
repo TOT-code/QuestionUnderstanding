@@ -5,58 +5,457 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>问题理解与方面生成助手</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- 我们稍后会创建 static/style.css -->
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Prism.js 语法高亮 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- JSON Tree Viewer 样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.2/jsoneditor.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>问题理解与方面生成助手</h1>
-
-        <div class="section api-info">
-            <p>当前API: <span id="currentApi">{{ current_api }}</span></p>
-            <!-- API切换功能待实现 -->
-        </div>
-
-        <div class="section question-input">
-            <h2>1. 输入您的问题</h2>
-            <textarea id="userQuestion" rows="3" placeholder="例如：我想了解一下Python的装饰器"></textarea>
-            <button id="submitQuestion">提交问题</button>
-        </div>
-
-        <div class="section output-display">
-            <h2>2. 处理结果</h2>
-            <div id="loadingIndicator" style="display: none;">正在处理，请稍候...</div>
-            <div id="errorMessage" class="error-message" style="display: none;"></div>
-            <h3>生成的JSON:</h3>
-            <pre id="jsonOutput">这里将显示处理后的JSON结果。</pre>
-            <p>输出文件路径: <span id="outputPath">N/A</span></p>
-        </div>
-
-        <div class="section template-management">
-            <h2>3. 方面模板管理</h2>
-            <div class="template-upload">
-                <h3>上传新模板</h3>
-                <input type="text" id="newTemplateFilename" placeholder="模板文件名 (例如: new_template.json)">
-                <textarea id="newTemplateContent" rows="10" placeholder="在此处粘贴JSON模板内容..."></textarea>
-                <button id="uploadTemplate">上传模板</button>
-                <div id="uploadMessage" class="message" style="display: none;"></div>
+    <div class="app-wrapper">
+        <!-- 面包屑导航 -->
+        <nav class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" data-step="home">
+                        <i class="fas fa-home"></i>
+                        首页
+                    </li>
+                    <li class="breadcrumb-item" data-step="analysis">
+                        <i class="fas fa-search"></i>
+                        问题分析
+                    </li>
+                    <li class="breadcrumb-item" data-step="results">
+                        <i class="fas fa-chart-line"></i>
+                        结果查看
+                    </li>
+                    <li class="breadcrumb-item" data-step="templates">
+                        <i class="fas fa-cog"></i>
+                        模板管理
+                    </li>
+                </ol>
             </div>
-            <div class="template-viewer">
-                <h3>查看/加载现有模板</h3>
-                <select id="existingTemplates">
-                    <option value="">选择一个模板查看...</option>
-                </select>
-                <button id="loadSelectedTemplate">加载选中模板到上方编辑区</button>
-                <div id="viewTemplateMessage" class="message" style="display: none;"></div>
+        </nav>
+
+        <div class="container">
+            <!-- 页面标题 -->
+            <header class="page-header">
+                <h1>
+                    <i class="fas fa-brain"></i>
+                    问题理解与方面生成助手
+                </h1>
+                <p class="subtitle">基于AI的智能问题分析与知识方面生成工具</p>
+            </header>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="step" data-step="1">
+                    <div class="step-circle">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="step-label">输入问题</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="2">
+                    <div class="step-circle">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="step-label">AI分析</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="3">
+                    <div class="step-circle">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div class="step-label">生成方面</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="4">
+                    <div class="step-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="step-label">完成</div>
+                </div>
             </div>
-        </div>
-        
-        <div class="section app-control">
-            <button id="shutdownApp">关闭应用</button>
-            <div id="shutdownMessage" class="message" style="display: none;"></div>
+
+            <!-- 系统状态卡片 -->
+            <div class="card status-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-server"></i> 系统状态</h3>
+                </div>
+                <div class="card-body">
+                    <div class="status-item">
+                        <span class="status-label">当前API:</span>
+                        <span class="status-value" id="currentApi">{{ current_api }}</span>
+                        <span class="status-indicator online"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 问题输入卡片 -->
+            <div class="card question-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-question-circle"></i> 问题输入</h3>
+                    <span class="step-badge">步骤 1</span>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <textarea id="userQuestion" rows="4" placeholder="请输入您的问题，例如：我想了解一下Python的装饰器、OFDM调制技术的原理、CFAR检测算法等..."></textarea>
+                        <div class="input-actions">
+                            <button id="submitQuestion" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                开始分析
+                            </button>
+                            <button id="clearQuestion" class="btn-secondary">
+                                <i class="fas fa-eraser"></i>
+                                清空
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 处理结果卡片 -->
+            <div class="card results-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> 分析结果</h3>
+                    <span class="step-badge">步骤 2-4</span>
+                </div>
+                <div class="card-body">
+                    <!-- 加载指示器 -->
+                    <div id="loadingIndicator" class="loading-container" style="display: none;">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                        <div class="loading-text">
+                            <span id="loadingText">正在分析问题...</span>
+                            <div class="loading-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <span class="progress-text" id="progressText">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 错误信息 -->
+                    <div id="errorMessage" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="error-text"></span>
+                    </div>
+
+                    <!-- JSON输出区域 -->
+                    <div class="result-section">
+                        <div class="result-header">
+                            <h4><i class="fas fa-code"></i> 生成的结构化数据</h4>
+                            <div class="json-view-controls">
+                                <div class="view-mode-tabs">
+                                    <button id="treeViewBtn" class="view-tab-btn active" title="树状视图">
+                                        <i class="fas fa-sitemap"></i>
+                                        树状视图
+                                    </button>
+                                    <button id="codeViewBtn" class="view-tab-btn" title="代码视图">
+                                        <i class="fas fa-code"></i>
+                                        代码视图
+                                    </button>
+                                </div>
+                                <div class="json-search-container">
+                                    <input type="text" id="jsonSearch" placeholder="搜索JSON内容..." class="json-search-input">
+                                    <button id="clearSearch" class="search-clear-btn" title="清空搜索">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="result-actions">
+                                    <button id="expandAll" class="btn-secondary" title="展开全部">
+                                        <i class="fas fa-expand-arrows-alt"></i>
+                                    </button>
+                                    <button id="collapseAll" class="btn-secondary" title="折叠全部">
+                                        <i class="fas fa-compress-arrows-alt"></i>
+                                    </button>
+                                    <button id="copyJson" class="btn-secondary" title="复制JSON">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button id="downloadJson" class="btn-secondary" title="下载JSON">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button id="formatJson" class="btn-secondary" title="格式化">
+                                        <i class="fas fa-magic"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 搜索结果提示 -->
+                        <div id="searchResults" class="search-results" style="display: none;">
+                            <i class="fas fa-search"></i>
+                            <span id="searchResultText">搜索结果: 0 项匹配</span>
+                            <div class="search-navigation">
+                                <button id="prevResult" class="search-nav-btn" title="上一个">
+                                    <i class="fas fa-chevron-up"></i>
+                                </button>
+                                <button id="nextResult" class="search-nav-btn" title="下一个">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 树状视图容器 -->
+                        <div id="jsonTreeView" class="json-tree-container">
+                            <div class="json-placeholder">
+                                <i class="fas fa-file-code"></i>
+                                <p>这里将显示JSON树状视图...</p>
+                            </div>
+                        </div>
+
+                        <!-- 代码视图容器 -->
+                        <div id="jsonCodeView" class="json-code-container" style="display: none;">
+                            <pre id="jsonOutput" class="json-output language-json">这里将显示处理后的JSON结果...</pre>
+                        </div>
+                    </div>
+
+                    <!-- 文件信息 -->
+                    <div class="file-info">
+                        <i class="fas fa-file-alt"></i>
+                        <span>输出文件路径: </span>
+                        <code id="outputPath">N/A</code>
+                    </div>
+
+                    <!-- Prompt生成区域 - 新增的集成功能 -->
+                    <div id="promptGenerationSection" class="prompt-section" style="display: none;">
+                        <div class="prompt-section-header">
+                            <h4><i class="fas fa-wand-magic-sparkles"></i> 生成智能Prompt</h4>
+                            <p class="prompt-description">基于分析结果生成结构化的LLM提示词，确保AI严格按照内容回复</p>
+                        </div>
+                        
+                        <div class="prompt-controls">
+                            <!-- 快速生成区域 -->
+                            <div class="quick-prompt-area">
+                                <div class="input-group">
+                                    <label for="quickUserQuestion">您的具体问题</label>
+                                    <textarea id="quickUserQuestion" rows="2" placeholder="请输入具体问题，例如：什么是5G的核心技术原理？"></textarea>
+                                </div>
+                                
+                                <div class="prompt-options">
+                                    <div class="option-group">
+                                        <label>输出模式</label>
+                                        <div class="radio-group">
+                                            <label class="radio-option">
+                                                <input type="radio" name="quickOutputFormat" value="normal" checked>
+                                                <span>普通模式</span>
+                                            </label>
+                                            <label class="radio-option">
+                                                <input type="radio" name="quickOutputFormat" value="strict">
+                                                <span>严格控制模式</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="option-group">
+                                        <label>场景类型</label>
+                                        <select id="quickScenarioSelect">
+                                            <option value="auto">自动识别</option>
+                                            <option value="direct_answer_v1">直接回答</option>
+                                            <option value="guided_question_v1">引导学习</option>
+                                            <option value="knowledge_explain_v1">详细解释</option>
+                                            <option value="compare_analysis_v1">对比分析</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="prompt-actions">
+                                    <button id="quickGeneratePrompt" class="btn-primary">
+                                        <i class="fas fa-magic"></i>
+                                        快速生成Prompt
+                                    </button>
+                                    <button id="analyzeQuestionScenario" class="btn-secondary">
+                                        <i class="fas fa-search"></i>
+                                        智能分析场景
+                                    </button>
+                                    <button id="showAdvancedPrompt" class="btn-secondary">
+                                        <i class="fas fa-cogs"></i>
+                                        高级选项
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 高级选项区域 -->
+                            <div id="advancedPromptOptions" class="advanced-options" style="display: none;">
+                                <div class="advanced-header">
+                                    <h5><i class="fas fa-sliders-h"></i> 高级选项</h5>
+                                    <button id="hideAdvancedPrompt" class="btn-link">
+                                        <i class="fas fa-chevron-up"></i>
+                                        隐藏
+                                    </button>
+                                </div>
+                                
+                                <div class="advanced-controls">
+                                    <div class="input-group">
+                                        <label>数据源选择</label>
+                                        <div class="radio-group">
+                                            <label class="radio-option">
+                                                <input type="radio" name="dataSource" value="current" checked>
+                                                <span>当前分析结果</span>
+                                            </label>
+                                            <label class="radio-option">
+                                                <input type="radio" name="dataSource" value="file">
+                                                <span>选择历史文件</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div id="fileDataSource" class="input-group" style="display: none;">
+                                        <label>选择JSON文件</label>
+                                        <select id="advancedFileSelect">
+                                            <option value="">请选择历史分析文件...</option>
+                                        </select>
+                                        <button id="refreshFileList" class="btn-link">
+                                            <i class="fas fa-refresh"></i>
+                                            刷新列表
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 生成结果区域 -->
+                            <div id="promptResultArea" class="prompt-result-area" style="display: none;">
+                                <div class="result-header">
+                                    <h5><i class="fas fa-file-text"></i> 生成的Prompt</h5>
+                                    <div class="result-meta">
+                                        <span id="promptScenarioInfo" class="scenario-badge"></span>
+                                        <span id="promptConfidenceInfo" class="confidence-info"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="prompt-result-container">
+                                    <div class="prompt-result-toolbar">
+                                        <div class="toolbar-left">
+                                            <span class="word-count">字数: <span id="promptWordCount">0</span></span>
+                                        </div>
+                                        <div class="toolbar-right">
+                                            <button id="copyGeneratedPrompt" class="btn-icon" title="复制Prompt">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <button id="downloadGeneratedPrompt" class="btn-icon" title="下载Prompt">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                            <button id="editGeneratedPrompt" class="btn-icon" title="编辑Prompt">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <textarea id="generatedPromptOutput" readonly rows="12" class="prompt-output"></textarea>
+                                </div>
+                                
+                                <div class="prompt-usage-tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>使用提示：将生成的Prompt复制到您的LLM对话中，即可获得结构化、准确的回复</span>
+                                </div>
+                            </div>
+
+                            <!-- 错误信息显示 -->
+                            <div id="promptError" class="prompt-error" style="display: none;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span class="error-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模板管理卡片 -->
+            <div class="card templates-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-puzzle-piece"></i> 模板管理</h3>
+                    <div class="card-tabs">
+                        <button class="tab-btn active" data-tab="upload">上传模板</button>
+                        <button class="tab-btn" data-tab="manage">管理模板</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- 上传模板标签页 -->
+                    <div class="tab-content active" id="upload-tab">
+                        <div class="upload-section">
+                            <div class="input-group">
+                                <label for="newTemplateFilename">模板文件名</label>
+                                <input type="text" id="newTemplateFilename" placeholder="例如: my_custom_template.json">
+                            </div>
+                            <div class="input-group">
+                                <label for="newTemplateContent">模板内容 (JSON格式)</label>
+                                <textarea id="newTemplateContent" rows="8" placeholder="在此处粘贴JSON模板内容..."></textarea>
+                            </div>
+                            <div class="template-actions">
+                                <button id="uploadTemplate" class="btn-primary">
+                                    <i class="fas fa-upload"></i>
+                                    上传模板
+                                </button>
+                                <button id="validateTemplate" class="btn-secondary">
+                                    <i class="fas fa-check-circle"></i>
+                                    验证格式
+                                </button>
+                            </div>
+                            <div id="uploadMessage" class="message" style="display: none;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 管理模板标签页 -->
+                    <div class="tab-content" id="manage-tab">
+                        <div class="template-list">
+                            <div class="template-selector">
+                                <label for="existingTemplates">选择模板</label>
+                                <select id="existingTemplates">
+                                    <option value="">选择一个模板查看...</option>
+                                </select>
+                            </div>
+                            <div class="template-actions">
+                                <button id="loadSelectedTemplate" class="btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                    加载到编辑区
+                                </button>
+                                <button id="previewTemplate" class="btn-secondary">
+                                    <i class="fas fa-eye"></i>
+                                    预览模板
+                                </button>
+                            </div>
+                            <div id="viewTemplateMessage" class="message" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 系统控制卡片 -->
+            <div class="card control-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tools"></i> 系统控制</h3>
+                </div>
+                <div class="card-body">
+                    <div class="control-section">
+                        <p class="control-description">系统管理和控制选项</p>
+                        <div class="control-actions">
+                            <button id="shutdownApp" class="btn-danger">
+                                <i class="fas fa-power-off"></i>
+                                关闭应用
+                            </button>
+                        </div>
+                        <div id="shutdownMessage" class="message" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Prism.js 语法高亮 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    
+    <!-- JSON Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.2/jsoneditor.min.js"></script>
+    
+    <!-- 主要脚本 -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <!-- 我们稍后会创建 static/script.js -->
+    
+    <!-- 集成的Prompt处理模块 -->
+    <script src="{{ url_for('static', filename='integrated-prompt-handler.js') }}"></script>
 </body>
 </html>

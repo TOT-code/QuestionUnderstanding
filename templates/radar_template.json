@@ -1,0 +1,90 @@
+[
+  {
+    "facet_id": "radar_principle_and_definition",
+    "facet_name_cn_template": "[主题]的雷达原理与定义",
+    "facet_description_cn_template": "解释[主题]的基本雷达原理、工作机制和核心概念定义。",
+    "example_question_templates": [
+      "什么是[主题]？",
+      "[主题]的雷达工作原理是什么？",
+      "[主题]是如何工作的？"
+    ],
+    "base_keywords": ["雷达原理", "定义", "工作机制", "基本概念"]
+  },
+  {
+    "facet_id": "system_components",
+    "facet_name_cn_template": "[主题]的系统组成与结构",
+    "facet_description_cn_template": "详述[主题]的主要组成部分、硬件结构和系统配置。",
+    "example_question_templates": [
+      "[主题]由哪些主要部分组成？",
+      "[主题]的系统结构是怎样的？",
+      "[主题]包含哪些关键硬件？"
+    ],
+    "base_keywords": ["系统组成", "硬件结构", "组件配置", "系统架构"]
+  },
+  {
+    "facet_id": "technical_parameters",
+    "facet_name_cn_template": "[主题]的技术参数与性能",
+    "facet_description_cn_template": "分析[主题]的关键技术参数、性能指标和技术规格。",
+    "example_question_templates": [
+      "[主题]的主要技术参数有哪些？",
+      "[主题]的性能指标是什么？",
+      "如何评估[主题]的技术性能？"
+    ],
+    "base_keywords": ["技术参数", "性能指标", "技术规格", "参数评估"]
+  },
+  {
+    "facet_id": "signal_processing_methods",
+    "facet_name_cn_template": "[主题]的信号处理方法",
+    "facet_description_cn_template": "探讨[主题]中采用的信号处理算法、数据处理技术和分析方法。",
+    "example_question_templates": [
+      "[主题]使用哪些信号处理方法？",
+      "[主题]的数据处理流程是什么？",
+      "[主题]如何进行信号分析？"
+    ],
+    "base_keywords": ["信号处理", "数据处理", "算法分析", "信号分析"]
+  },
+  {
+    "facet_id": "detection_and_measurement",
+    "facet_name_cn_template": "[主题]的目标检测与测量",
+    "facet_description_cn_template": "说明[主题]的目标检测能力、测距测速原理和测量精度。",
+    "example_question_templates": [
+      "[主题]如何进行目标检测？",
+      "[主题]的测距测速原理是什么？",
+      "[主题]的测量精度如何？"
+    ],
+    "base_keywords": ["目标检测", "测距测速", "测量精度", "检测能力"]
+  },
+  {
+    "facet_id": "antenna_technology",
+    "facet_name_cn_template": "[主题]的天线技术",
+    "facet_description_cn_template": "介绍[主题]使用的天线类型、波束形成技术和天线特性。",
+    "example_question_templates": [
+      "[主题]使用什么类型的天线？",
+      "[主题]的天线特性是什么？",
+      "[主题]如何进行波束控制？"
+    ],
+    "base_keywords": ["天线技术", "波束形成", "天线特性", "天线类型"]
+  },
+  {
+    "facet_id": "application_fields",
+    "facet_name_cn_template": "[主题]的应用领域与实例",
+    "facet_description_cn_template": "列举[主题]在各个领域的具体应用和典型案例。",
+    "example_question_templates": [
+      "[主题]主要应用在哪些领域？",
+      "[主题]的典型应用案例有哪些？",
+      "[主题]在实际中如何使用？"
+    ],
+    "base_keywords": ["应用领域", "实际应用", "应用案例", "使用场景"]
+  },
+  {
+    "facet_id": "development_trends",
+    "facet_name_cn_template": "[主题]的技术发展趋势",
+    "facet_description_cn_template": "分析[主题]的技术发展方向、未来趋势和技术挑战。",
+    "example_question_templates": [
+      "[主题]的发展趋势是什么？",
+      "[主题]未来会有哪些技术突破？",
+      "[主题]面临哪些技术挑战？"
+    ],
+    "base_keywords": ["发展趋势", "技术发展", "未来趋势", "技术挑战"]
+  }
+]

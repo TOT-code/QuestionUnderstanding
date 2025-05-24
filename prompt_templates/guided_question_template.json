@@ -1,0 +1,29 @@
+{
+  "template_id": "guided_question_v1",
+  "template_name": "引导提问模板",
+  "template_name_en": "Guided Question Template",
+  "scenario": "用户表达对某个主题的兴趣，需要引导用户深入了解特定方面",
+  "prompt_template": "你是一位专业的{domain_cn}领域专家。用户对\"{main_topic_cn}\"表示感兴趣。\n\n基于以下结构化知识框架，请为用户提供专业的学习引导：\n\n**主题领域：** {domain_cn} - {sub_domain_cn}\n**核心主题：** {main_topic_cn}\n\n**可深入了解的专业维度：**\n{facets_list}\n\n**任务要求：**\n1. 简要介绍该主题的重要性（1-2句话）\n2. 为用户推荐最适合入门的2-3个维度，并说明推荐理由\n3. 为每个推荐维度提供1-2个具体的引导问题\n4. 询问用户希望从哪个维度开始了解\n\n**回答格式：**\n```\n{main_topic_cn}是{domain_cn}领域的重要内容...\n\n我建议您可以从以下几个维度开始了解：\n\n1. 【维度名称】\n   推荐理由：...\n   引导问题：\n   - 问题1\n   - 问题2\n\n2. 【维度名称】\n   推荐理由：...\n   引导问题：\n   - 问题1\n   - 问题2\n\n您希望从哪个维度开始深入了解呢？\n```\n\n请严格按照上述格式提供引导。",
+  "output_format": {
+    "type": "structured_guidance",
+    "requirements": [
+      "包含主题重要性介绍",
+      "推荐2-3个入门维度",
+      "每个维度提供推荐理由",
+      "提供具体引导问题",
+      "以询问结束"
+    ]
+  },
+  "constraints": [
+    "严格基于提供的facets内容",
+    "推荐维度必须从提供的facets中选择",
+    "引导问题必须基于facets中的example_questions",
+    "保持专业性和逻辑性",
+    "回答长度控制在300-600字"
+  ],
+  "use_cases": [
+    "用户初次了解某个技术领域",
+    "用户表达学习兴趣但不知从何开始",
+    "用户需要系统性的学习指导"
+  ]
+}

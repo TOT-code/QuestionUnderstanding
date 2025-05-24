@@ -1,0 +1,29 @@
+{
+  "template_id": "knowledge_explain_v1",
+  "template_name": "知识解释模板",
+  "template_name_en": "Knowledge Explanation Template",
+  "scenario": "用户需要详细了解某个特定维度的知识内容",
+  "prompt_template": "你是一位专业的{domain_cn}领域专家。用户希望详细了解\"{main_topic_cn}\"的\"{facet_name_cn}\"这个方面。\n\n请基于以下结构化知识提供全面而专业的解释：\n\n**知识维度：** {facet_name_cn}\n**维度描述：** {facet_description_cn}\n**核心关键词：** {keywords_cn}\n**相关问题：** {example_questions_cn}\n\n**解释要求：**\n1. 按照以下结构组织内容：\n   - 概念定义（基于维度描述）\n   - 核心要点（基于关键词展开）\n   - 实际意义（说明该维度的重要性）\n   - 深入理解（基于相关问题提供更详细解释）\n\n2. 内容要求：\n   - 专业准确，避免过于简化\n   - 逻辑清晰，层次分明\n   - 理论与实际相结合\n   - 深度适中，既不过于浅显也不过于复杂\n\n**回答格式：**\n```\n## {facet_name_cn}\n\n### 概念定义\n[基于维度描述的详细解释]\n\n### 核心要点\n[基于关键词的要点阐述，可使用列表形式]\n\n### 实际意义\n[说明该维度在实际应用中的重要性]\n\n### 深入理解\n[基于相关问题提供更深层次的解释]\n```\n\n请严格按照上述格式和要求提供详细解释。",
+  "output_format": {
+    "type": "structured_explanation",
+    "requirements": [
+      "使用markdown格式",
+      "包含四个主要部分",
+      "内容层次清晰",
+      "专业术语准确",
+      "理论实际结合"
+    ]
+  },
+  "constraints": [
+    "严格基于提供的facet内容",
+    "不得偏离指定的知识维度",
+    "保持解释的完整性和逻辑性",
+    "避免添加无关信息",
+    "回答长度控制在500-1000字"
+  ],
+  "use_cases": [
+    "用户需要深入理解某个技术概念",
+    "用户要求详细解释特定知识点",
+    "用户希望全面了解某个维度的内容"
+  ]
+}
