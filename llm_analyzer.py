@@ -1,11 +1,11 @@
 import json
-from typing import Dict, Optional
+from typing import Dict, Optional, Any # Added Any
 from openai import OpenAI
 import os
 
 # DashScope API Credentials
 # 更好的做法: os.environ.get("DASHSCOPE_API_KEY")
-DASHSCOPE_API_KEY = "*******" # 您提供的API Key
+DASHSCOPE_API_KEY = "sk-8f6c94372d804ceca9dd394cc98ee2e4" # 您提供的API Key
 DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
 client = OpenAI(
@@ -43,7 +43,24 @@ def build_system_prompt() -> str:
         "confidence_score": 0.98
     }, ensure_ascii=False)
 
-    system_prompt = f"""你是一个智能助手，负责分析用户关于编程和科学领域的提问。
+    # 新增通信和雷达领域的示例响应
+    example3_response_json_str = json.dumps({
+        "main_topic_cn": "OFDM调制技术",
+        "main_topic_en": "OFDM Modulation",
+        "domain_cn": "电子工程",
+        "sub_domain_cn": "通信算法",
+        "confidence_score": 0.93
+    }, ensure_ascii=False)
+
+    example4_response_json_str = json.dumps({
+        "main_topic_cn": "CFAR检测算法",
+        "main_topic_en": "CFAR Detection Algorithm",
+        "domain_cn": "电子工程",
+        "sub_domain_cn": "雷达信号处理",
+        "confidence_score": 0.92
+    }, ensure_ascii=False)
+
+    system_prompt = f"""你是一个智能助手，负责分析用户关于编程、科学和电子工程领域的提问。
 你的任务是从用户的提问中识别出核心主题，并将其分类到一个合适的领域和子领域。
 请严格以JSON格式输出分析结果。
 
@@ -52,12 +69,14 @@ def build_system_prompt() -> str:
   - 子领域示例: Python, Java, JavaScript, C++, 算法与数据结构, Web开发, 机器学习库, 数据库, 操作系统, 计算机网络等。
 - 科学 (Science)
   - 子领域示例: 物理学 (经典力学, 电磁学, 量子力学, 相对论, 天体物理), 化学 (有机化学, 无机化学, 物理化学), 生物学 (细胞生物学, 遗传学, 生态学, 生理学), 地球科学, 数学等。
+- 电子工程 (Electronics Engineering)
+  - 子领域示例: 通信算法 (OFDM, MIMO, Turbo码, LDPC码, 调制解调), 雷达信号处理 (脉冲压缩, CFAR检测, 目标跟踪, 波束形成), 数字信号处理, 射频电路设计等。
 
 输出的JSON对象必须包含以下字段：
 - "main_topic_cn": 字符串类型，识别出的核心主题（中文）。
 - "main_topic_en": 字符串类型，核心主题的英文翻译（如果适用且能判断，若不能则为空字符串 ""）。
-- "domain_cn": 字符串类型，主要领域（例如："编程" 或 "科学"）。
-- "sub_domain_cn": 字符串类型，更具体的子领域（例如："Python", "算法与数据结构", "物理学-经典力学"）。
+- "domain_cn": 字符串类型，主要领域（例如："编程", "科学" 或 "电子工程"）。
+- "sub_domain_cn": 字符串类型，更具体的子领域（例如："Python", "算法与数据结构", "物理学-经典力学", "通信算法", "雷达信号处理"）。
 - "confidence_score": 浮点数类型，你对这个分析结果的置信度 (0.0 - 1.0)，请尽量评估。
 
 以下是一些示例，请学习并遵循此JSON格式：
@@ -67,6 +86,12 @@ A: {example1_response_json_str}
 
 Q: "牛顿第一定律讲的是啥？"
 A: {example2_response_json_str}
+
+Q: "OFDM调制技术的原理是什么？"
+A: {example3_response_json_str}
+
+Q: "CFAR检测算法如何工作？"
+A: {example4_response_json_str}
 """
     return system_prompt
 
@@ -122,6 +147,46 @@ def analyze_question_with_llm(user_question: str) -> Dict[str, Optional[any]]:
     except Exception as e:
         print(f"调用DashScope LLM API时发生错误: {e}")
         return DEFAULT_LLM_RESPONSE.copy()
+
+def perform_deep_analysis_with_llm(master_prompt: str) -> Dict[str, Any]:
+    """
+    使用主分析指令调用LLM进行深度分析。
+    :param master_prompt: 包含所有方面分析要求的主指令。
+    :return: LLM返回的深度分析结果。
+    """
+    print(f"正在使用DashScope LLM进行深度分析...")
+    
+    try:
+        completion = client.chat.completions.create(
+            model="qwen-max", # 使用更强大的模型进行深度分析
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是一位资深的领域专家和技术作家，擅长对复杂主题进行深入、全面且结构清晰的分析。请严格按照用户提供的分析指令进行作答。"
+                },
+                {
+                    "role": "user",
+                    "content": master_prompt
+                }
+            ],
+            # 深度分析可能不需要严格的JSON输出，而是结构化的文本
+            # response_format={"type": "text"}, 
+            temperature=0.5, # 允许一定的创造性，但保持准确性
+            max_tokens=3000, # 深度分析需要更多token
+            top_p=0.9
+        )
+        
+        llm_response_content = completion.choices[0].message.content
+        print(f"LLM深度分析原始响应: {llm_response_content[:500]}...") # 打印部分响应
+
+        # 这里假设LLM会按照指令返回结构化的文本
+        # 后续可能需要解析这个文本来填充到各个方面
+        # 目前简单返回整个文本
+        return {"deep_analysis_text": llm_response_content}
+
+    except Exception as e:
+        print(f"调用DashScope LLM API进行深度分析时发生错误: {e}")
+        return {"deep_analysis_text": f"深度分析失败: {e}"}
 
 if __name__ == '__main__':
     test_questions = [

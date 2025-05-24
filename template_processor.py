@@ -13,6 +13,12 @@ TEMPLATE_MAPPING = {
     ("编程", "Python"): "python_concept_template.json",
     ("编程", "算法与数据结构"): "algorithm_template.json",
     ("编程", None): "python_concept_template.json", # 通用编程概念也先用python的模板
+    ("通信工程", None): "communication_template.json",
+    ("雷达技术", None): "radar_template.json",
+    ("信号处理", None): "signal_processing_template.json",
+    ("电子工程", None): "electronics_template.json",
+    ("通信", None): "communication_template.json", # 通信的简称映射
+    ("雷达", None): "radar_template.json", # 雷达的简称映射
     ("科学", "物理学-经典力学"): "physics_law_template.json", # 假设我们未来会创建这个
     ("科学", "生物学"): "biology_process_template.json", # 假设我们未来会创建这个
     ("科学", None): "science_generic_template.json" # 假设我们未来会创建这个
